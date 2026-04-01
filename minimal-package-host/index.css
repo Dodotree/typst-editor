@@ -163,10 +163,6 @@ button {
   min-height: 0;
 }
 
-.tinymist-document {
-  min-height: 260px;
-}
-
 .tinymist-preview-pdf-frame {
   width: 100%;
   min-height: 300px;
@@ -185,12 +181,67 @@ button {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 6px 8px;
+  align-items: center;
 }
 
-.search-row {
+.tinymist-search-panel[hidden] {
+  display: none;
+}
+
+.tinymist-search-toggle {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: center;
+  padding: 4px;
+}
+
+.tinymist-search-close-button {
+  grid-column: 3;
+  grid-row: 1;
+  padding: 4px;
+}
+
+.tinymist-search-main-row {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+  align-items: center;
+}
+
+.tinymist-search-replace-row {
+  grid-column: 2 / -1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.tinymist-search-replace-row[hidden] {
+  display: none;
+}
+
+.tinymist-search-main-row input,
+.tinymist-search-replace-row input {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* when-expanded / when-collapsed visibility */
+[aria-expanded="false"] .when-expanded,
+[aria-expanded="true"] .when-collapsed {
+  display: none;
+}
+
+[aria-expanded="true"] .when-expanded,
+[aria-expanded="false"] .when-collapsed {
+  display: inline;
 }
 
 .tinymist-theme-settings-overlay,

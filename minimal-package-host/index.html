@@ -55,20 +55,24 @@
           </div>
 
           <section class="tinymist-search-panel" hidden>
-            <div class="search-row">
-              <input data-tm-search="query" placeholder="Find" />
-              <output class="tinymist-search-count">0 / 0</output>
-              <button type="button" data-tm-search-action="previous">Prev</button>
-              <button type="button" data-tm-search-action="next">Next</button>
-              <button type="button" data-tm-search-action="toggleReplace">Replace</button>
-              <button type="button" data-tm-search-action="close">Close</button>
-            </div>
-            <div class="tinymist-search-replace-row" hidden>
-              <input data-tm-search="replace" placeholder="Replace" />
-              <button type="button" data-tm-search-action="replace">Replace Next</button>
-              <button type="button" data-tm-search-action="replaceAll">Replace All</button>
-            </div>
+                <button class="text-button tinymist-search-toggle" type="button" data-tm-search-action="toggleReplace" title="Toggle replace" aria-expanded="false" aria-label="Toggle replace">
+                    <span class="when-collapsed"><img class="btn-icon-img" src="./icons/chevron-right.svg" alt="" aria-hidden="true" /></span>
+                    <span class="when-expanded"><img class="btn-icon-img" src="./icons/chevron-down.svg" alt="" aria-hidden="true" /></span>
+                </button>
+                <button class="text-button tinymist-search-close-button" type="button" data-tm-search-action="close" title="Close search" aria-label="Close search"><img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" /></button>
+                <div class="tinymist-search-row tinymist-search-main-row">
+                    <input type="text" data-tm-search="query" placeholder="Find" aria-label="Find">
+                    <span class="tinymist-search-count text-small text-muted">0 / 0</span>
+                    <button class="text-button" type="button" data-tm-search-action="previous" title="Previous match" aria-label="Previous match"><img class="btn-icon-img" src="./icons/sort-up.svg" alt="" aria-hidden="true" /></button>
+                    <button class="text-button" type="button" data-tm-search-action="next" title="Next match" aria-label="Next match"><img class="btn-icon-img" src="./icons/sort-down.svg" alt="" aria-hidden="true" /></button>
+                </div>
+                <div class="tinymist-search-row tinymist-search-replace-row" hidden="">
+                    <input type="text" data-tm-search="replace" placeholder="Replace" aria-label="Replace">
+                    <button class="text-button" type="button" data-tm-search-action="replace" title="Replace next" aria-label="Replace next"><img class="btn-icon-img" src="./icons/editor/replace.svg" alt="" aria-hidden="true" /></button>
+                    <button class="text-button" type="button" data-tm-search-action="replaceAll" title="Replace all" aria-label="Replace all"><img class="btn-icon-img" src="./icons/editor/replace-all.svg" alt="" aria-hidden="true" /></button>
+                </div>
           </section>
+
         </div>
 
         <section id="tinymist-console-panel">
