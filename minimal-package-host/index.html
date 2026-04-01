@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinymist Minimal Host</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>Tinymist Minimal Host</h1>
+
+    <form id="tinymist-form">
+      <section id="tinymist-editor" class="tinymist-shell">
+        <div class="tinymist-editor-pane">
+          <div class="toolbar-row">
+            <select class="tinymist-file-select" aria-label="File selector">
+              <option value="entry.typ">entry.typ</option>
+            </select>
+
+            <button type="button" data-action="insertHeading" title="Insert heading">
+              <img class="btn-icon-img" src="./icons/editor/header.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertBold" title="Insert bold">
+              <img class="btn-icon-img" src="./icons/editor/bold.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertItalic" title="Insert italic">
+              <img class="btn-icon-img" src="./icons/editor/italic.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertMath" title="Insert math">
+              <img class="btn-icon-img" src="./icons/editor/sum.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertCodeBlock" title="Insert code block">
+              <img class="btn-icon-img" src="./icons/editor/code-block.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertImage" title="Insert image">
+              <img class="btn-icon-img" src="./icons/image.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="insertLink" title="Insert link">
+              <img class="btn-icon-img" src="./icons/editor/link.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="openSearchReplace" title="Search and replace">
+              <img class="btn-icon-img" src="./icons/search.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="changeCodeMirrorSettings" title="Theme settings">
+              <img class="btn-icon-img" src="./icons/settings.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+
+          <textarea id="tinymist-editor-input" spellcheck="false">= Tinymist\nHello from a minimal npm host.</textarea>
+
+          <div class="tinymist-editor-image-view" hidden>
+            <img class="tinymist-editor-image" alt="Attachment preview" hidden />
+            <div class="tinymist-editor-image-message"></div>
+          </div>
+
+          <section class="tinymist-search-panel" hidden>
+            <div class="search-row">
+              <input data-tm-search="query" placeholder="Find" />
+              <output class="tinymist-search-count">0 / 0</output>
+              <button type="button" data-tm-search-action="previous">Prev</button>
+              <button type="button" data-tm-search-action="next">Next</button>
+              <button type="button" data-tm-search-action="toggleReplace">Replace</button>
+              <button type="button" data-tm-search-action="close">Close</button>
+            </div>
+            <div class="tinymist-search-replace-row" hidden>
+              <input data-tm-search="replace" placeholder="Replace" />
+              <button type="button" data-tm-search-action="replace">Replace Next</button>
+              <button type="button" data-tm-search-action="replaceAll">Replace All</button>
+            </div>
+          </section>
+        </div>
+
+        <section id="tinymist-console-panel">
+          <div class="toolbar-row">
+            <button type="button" data-action="toggleConsole" aria-expanded="true" title="Collapse Console">
+              <img class="btn-icon-img" src="./icons/chevron-down.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="clearConsole">
+              <img class="btn-icon-img" src="./icons/delete.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+          <div class="tinymist-console-content"></div>
+        </section>
+
+        <aside class="tinymist-preview-pane">
+          <div class="toolbar-row">
+            <select data-action="previewModeSelect" aria-label="Preview mode">
+              <option value="live-preview">Live preview <output></output></option>
+              <option value="toggle-live-preview">Pause Live</option>
+            </select>
+            <button type="button" data-action="previewZoomOut" title="Zoom out">
+              <img class="btn-icon-img" src="./icons/zoom-out.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewZoomReset" title="Reset zoom">
+              <img class="btn-icon-img" src="./icons/zoom-1.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewZoomIn" title="Zoom in">
+              <img class="btn-icon-img" src="./icons/zoom-in.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewPanToggle" title="Pan tool">
+              <img class="btn-icon-img" src="./icons/hand.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewCursorSpotlightToggle" title="Cursor spotlight">
+              <img class="btn-icon-img" src="./icons/editor/caret-spotlight.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewScrollIntoViewToggle" title="Scroll cursor into view">
+              <img class="btn-icon-img" src="./icons/editor/auto-scroll.svg" alt="" aria-hidden="true" />
+            </button>
+            <button type="button" data-action="previewSettingsOpen" title="Open preview settings">
+              <img class="btn-icon-img" src="./icons/settings.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div class="tinymist-preview-content">
+            <div class="tinymist-document"></div>
+            <p class="text-muted p-m">Waiting for preview...</p>
+            <div class="tinymist-error" hidden></div>
+          </div>
+
+          <iframe class="tinymist-preview-pdf-frame" hidden title="Tinymist PDF Preview"></iframe>
+
+          <div class="tinymist-preview-settings-overlay" hidden>
+            <div class="theme-modal">
+              <h2>Preview Settings</h2>
+              <label>
+                Initial zoom
+                <input type="number" step="0.05" min="0.25" max="3" data-tm-preview-setting="initial-zoom" />
+              </label>
+              <p>Current zoom: <output data-tm-preview-setting="current-zoom"></output></p>
+              <div class="toolbar-row">
+                <button type="button" data-action="closePreviewSettings">
+                  <img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" />
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="tinymist-theme-settings-overlay" hidden>
+          <div class="theme-modal">
+            <h2>Editor Theme</h2>
+            <label class="setting-row">
+              <span class="text-muted text-small">Monospace Font Stack</span>
+              <input type="text" data-tm-token="tm-font-mono" placeholder="JetBrains Mono, Consolas, monospace" />
+              <div class="font-status text-small text-muted"></div>
+              <div class="font-preview text-small"></div>
+              <div class="font-probes"></div>
+            </label>
+            <label class="setting-row">
+              <span class="text-muted text-small">UI Font Stack</span>
+              <input type="text" data-tm-token="tm-font-ui" placeholder="Segoe UI, system-ui, sans-serif" />
+              <div class="font-status text-small text-muted"></div>
+              <div class="font-preview text-small"></div>
+              <div class="font-probes"></div>
+            </label>
+            <label class="setting-row">
+              <span class="text-muted text-small">Editor Font Size (px)</span>
+              <input type="number" min="8" max="48" step="0.5" data-tm-token="tm-font-size-mono" />
+            </label>
+            <label class="setting-row">
+              <span class="text-muted text-small">UI Font Size (px)</span>
+              <input type="number" min="8" max="48" step="0.5" data-tm-token="tm-font-size-ui" />
+            </label>
+            <div class="settings-grid"></div>
+            <div class="toolbar-row">
+              <button type="button" data-action="resetThemeSettings">Reset</button>
+              <button type="button" data-action="closeThemeSettings">
+                <img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" />
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <script type="module" src="./bundle.js"></script>
+</body>
+</html>

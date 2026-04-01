@@ -1,0 +1,109 @@
+{
+  "name": "@dodotree/typst-editor",
+  "version": "0.1.0",
+  "description": "Tinymist-based Typst editor with live preview, CodeMirror integration, and WASM rendering",
+  "license": "MIT",
+  "author": "Olga, Paul & Veny T.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dodotree/typst-editor.git"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "import": "./dist/constants.js"
+    },
+    "./event-bus": {
+      "types": "./dist/event-bus.d.ts",
+      "import": "./dist/event-bus.js"
+    },
+    "./console": {
+      "types": "./dist/console.d.ts",
+      "import": "./dist/console.js"
+    },
+    "./connections/*": {
+      "types": "./dist/connections/*.d.ts",
+      "import": "./dist/connections/*.js"
+    },
+    "./editor/*": {
+      "types": "./dist/editor/*.d.ts",
+      "import": "./dist/editor/*.js"
+    },
+    "./preview/*": {
+      "types": "./dist/preview/*.d.ts",
+      "import": "./dist/preview/*.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@myriaddreamin/typst.ts": ">=0.4.0",
+    "@myriaddreamin/typst-ts-renderer": ">=0.4.0"
+  },
+  "peerDependencies": {
+    "@codemirror/collab": "^6.0.0",
+    "@codemirror/commands": "^6.0.0",
+    "@codemirror/lang-css": "^6.0.0",
+    "@codemirror/lang-html": "^6.0.0",
+    "@codemirror/lang-javascript": "^6.0.0",
+    "@codemirror/lang-json": "^6.0.0",
+    "@codemirror/lang-markdown": "^6.0.0",
+    "@codemirror/lang-php": "^6.0.0",
+    "@codemirror/lang-python": "^6.0.0",
+    "@codemirror/language": "^6.0.0",
+    "@codemirror/legacy-modes": "^6.0.0",
+    "@codemirror/lint": "^6.0.0",
+    "@codemirror/state": "^6.0.0",
+    "@codemirror/theme-one-dark": "^6.0.0",
+    "@codemirror/view": "^6.0.0"
+  },
+  "devDependencies": {
+    "@codemirror/collab": "^6.1.1",
+    "@codemirror/commands": "^6.10.3",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lang-markdown": "^6.5.0",
+    "@codemirror/lang-php": "^6.0.2",
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/language": "^6.12.3",
+    "@codemirror/legacy-modes": "^6.5.2",
+    "@codemirror/lint": "^6.9.5",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "@codemirror/view": "^6.40.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.0"
+  },
+  "keywords": [
+    "typst",
+    "editor",
+    "tinymist",
+    "codemirror",
+    "preview",
+    "wasm",
+    "live-preview",
+    "typesetting"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

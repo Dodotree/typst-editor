@@ -1,0 +1,6 @@
+tinymist/
+tsconfig.json
+.gitignore
+.git/
+node_modules/
+*.tsbuildinfo
