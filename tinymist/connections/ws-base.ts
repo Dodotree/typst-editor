@@ -145,7 +145,14 @@ export abstract class TinymistWebSocketClient {
                         event.data.length === this.pongLength &&
                         event.data.includes('"type":"pong"')
                     ) {
-                        // console.log(`[${this.config.name}] Received pong`);
+                        return;
+                    }
+                    if (typeof event.data === "string" &&  event.data.includes('"type":"error"')) {
+                        console.error(
+                            `[${this.config.name}] WebSocket error:`,
+                            event,
+                        );
+                        this.onError(event);
                         return;
                     }
                     this.handleMessage(event.data);
@@ -186,7 +193,9 @@ export abstract class TinymistWebSocketClient {
                         1000: "Normal closure",
                         1001: "Going away",
                         1006: "Abnormal closure (no close frame)",
+                        1008: "Policy violation",
                         1011: "Internal server error",
+                        4401: "Unauthorized (custom code)",
                     };
 
                     if (event.reason === "INVALID_TOKEN") {
