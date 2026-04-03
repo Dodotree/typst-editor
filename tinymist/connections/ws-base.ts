@@ -141,19 +141,18 @@ export abstract class TinymistWebSocketClient {
                 };
 
                 this.socket.onmessage = (event) => {
-                    if (
-                        event.data.length === this.pongLength &&
-                        event.data.includes('"type":"pong"')
-                    ) {
-                        return;
-                    }
-                    if (typeof event.data === "string" &&  event.data.includes('"type":"error"')) {
-                        console.error(
-                            `[${this.config.name}] WebSocket error:`,
-                            event,
-                        );
-                        this.onError(event);
-                        return;
+                    if (typeof event.data === "string") {
+                        if (event.data.length === this.pongLength && event.data.includes('"type":"pong"')) {
+                            return;
+                        }
+                        if (event.data.includes('"type":"error"')) {
+                            console.error(`[${this.config.name}] WebSocket error:`, event,);
+                            this.onError(event);
+                            return;
+                        }
+                        if (event.data.includes('"type":"ack"') && event.data.includes('"fileName":"authTokenAck"')) {
+                            return;
+                        }
                     }
                     this.handleMessage(event.data);
                 };
