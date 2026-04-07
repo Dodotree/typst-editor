@@ -86,12 +86,10 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 12px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 12px;
-  padding: 12px;
   flex: 1;
+
   min-height: 0;
   height: calc(100dvh - var(--tm-editor-viewport-offset));
   max-height: calc(100dvh - var(--tm-editor-viewport-offset));
@@ -110,11 +108,16 @@ main {
   flex: 0 0 auto;
 }
 
-/* Match BookStack behavior: keep toolbar fixed in pane and let CodeMirror scroller handle overflow. */
+.toolbar-row .push-siblings-right {
+  margin-left: auto;
+}
+
 .tinymist-editor-pane .cm-editor {
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
 }
 
 .tinymist-editor-pane .cm-scroller {
@@ -173,6 +176,11 @@ main {
   align-items: center;
   margin-bottom: 8px;
 }
+.toolbar-row label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
 
 button,
 select,
@@ -186,8 +194,13 @@ input {
 
 #tinymist-editor select {
   width: auto;
-}
+  max-width: 14rem;
+  text-overflow: ellipsis;
 
+  font-size: 0.85rem;
+  background-color: var(--light-color);
+  color: var(--secondary-color);
+}
 button {
   cursor: pointer;
 }
@@ -410,6 +423,7 @@ button {
 .tinymist-theme-settings-overlay,
 .tinymist-preview-settings-overlay {
   position: fixed;
+  z-index: 2000;
   inset: 0;
   display: grid;
   place-items: center;

@@ -19,7 +19,7 @@
               <option value="entry.typ">entry.typ</option>
             </select>
 
-            <button type="button" data-action="insertHeading" title="Insert heading">
+            <button class="push-siblings-right" type="button" data-action="insertHeading" title="Insert heading">
               <img class="btn-icon-img" src="./icons/editor/header.svg" alt="" aria-hidden="true" />
             </button>
             <button type="button" data-action="insertBold" title="Insert bold">
@@ -78,7 +78,7 @@
 
         <section id="tinymist-console-panel">
           <div class="toolbar-row">
-            <button type="button" data-action="toggleConsole" aria-expanded="true" title="Collapse Console">
+            <button class="push-siblings-right" type="button" data-action="toggleConsole" aria-expanded="true" title="Collapse Console">
               <img class="btn-icon-img" src="./icons/chevron-down.svg" alt="" aria-hidden="true" />
             </button>
             <button type="button" data-action="clearConsole">
@@ -94,7 +94,11 @@
               <option value="live-preview">Live preview <output></output></option>
               <option value="toggle-live-preview">Pause Live</option>
             </select>
-            <button type="button" data-action="previewZoomOut" title="Zoom out">
+        <select id="entry-file-select" class="tinymist-file-select" aria-label="File selector">
+          <option value="entry.typ">entry.typ</option>
+        </select>
+
+            <button class="push-siblings-right" type="button" data-action="previewZoomOut" title="Zoom out">
               <img class="btn-icon-img" src="./icons/zoom-out.svg" alt="" aria-hidden="true" />
             </button>
             <button type="button" data-action="previewZoomReset" title="Reset zoom">
@@ -127,18 +131,17 @@
 
           <div class="tinymist-preview-settings-overlay" hidden>
             <div class="theme-modal">
-              <h2>Preview Settings</h2>
+              <div class="toolbar-row">
+                <h2>Preview Settings</h2>
+                <button class="push-siblings-right" type="button" data-action="closePreviewSettings">
+                  <img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" />
+                </button>
+              </div>
               <label>
                 Initial zoom
                 <input type="number" step="0.05" min="0.25" max="3" data-tm-preview-setting="initial-zoom" />
               </label>
               <p>Current zoom: <output data-tm-preview-setting="current-zoom"></output></p>
-              <div class="toolbar-row">
-                <button type="button" data-action="closePreviewSettings">
-                  <img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" />
-                  Close
-                </button>
-              </div>
             </div>
           </div>
         </aside>
@@ -171,9 +174,8 @@
             <div class="settings-grid"></div>
             <div class="toolbar-row">
               <button type="button" data-action="resetThemeSettings">Reset</button>
-              <button type="button" data-action="closeThemeSettings">
+              <button class="push-siblings-right" type="button" data-action="closeThemeSettings">
                 <img class="btn-icon-img" src="./icons/close.svg" alt="" aria-hidden="true" />
-                Close
               </button>
             </div>
           </div>
